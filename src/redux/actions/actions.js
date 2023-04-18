@@ -16,12 +16,12 @@ import {
 
 
 
-const BASE_URL = "https://backcountries-production.up.railway.app/";
+
 
 export function getCountries() {
   return async function (dispatch) {
     try {
-      const res = await axios.get(`${BASE_URL}/countries`)
+      const res = await axios.get(`/countries`)
       return dispatch({
         type: GET_ALL_COUNTRIES,
         payload: res.data
@@ -35,7 +35,7 @@ export function getCountries() {
 
 export const getDetail = (id) => async (dispatch) => {
   try {
-    const res = await axios.get(`${BASE_URL}/countries/${id}`);
+    const res = await axios.get(`/countries/${id}`);
     dispatch({
       type: GET_DETAIL,
       payload: res.data
@@ -48,7 +48,7 @@ export const getDetail = (id) => async (dispatch) => {
 
 export const searchCountry = (searchTerm) => async (dispatch) => {
   try {
-    const response = await axios.get(`${BASE_URL}/countries/name/${searchTerm}`);
+    const response = await axios.get(`/countries/name/${searchTerm}`);
     const data = response.data;
     if (data.length === 0) {
       alert(`The Search Term "${searchTerm}" does not relate to any country`);
@@ -93,7 +93,7 @@ export const filterByContinent = (continent) => {
 
 export const createActivity = (activityData) => async (dispatch) => {
   try {
-    const res = await axios.post(`${BASE_URL}/activities`, activityData)
+    const res = await axios.post(`/activities`, activityData)
     dispatch({ type: CREATE_ACTIVITY, payload: res.data })
   } catch (error) {
     console.error(error)
@@ -102,7 +102,7 @@ export const createActivity = (activityData) => async (dispatch) => {
 
 export const getAllActivities = () => async (dispatch) => {
   try {
-    const response = await axios.get(`${BASE_URL}/activities`);
+    const response = await axios.get(`/activities`);
     const data = response.data;
     dispatch({
       type: GET_ALL_ACTIVITIES,
