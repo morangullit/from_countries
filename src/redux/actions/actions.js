@@ -16,7 +16,7 @@ import {
 
 
 
-const BASE_URL = "https://backcountries-production.up.railway.app";
+const BASE_URL = "https://backcountries-production.up.railway.app/";
 
 export function getCountries() {
   return async function (dispatch) {
